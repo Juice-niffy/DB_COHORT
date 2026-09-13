@@ -1,5 +1,6 @@
 import productModel from '../model/productModel.js';
 import userModel from '../model/userModel.js';
+import cloudinary from '../config/cloudinary.js';
 
 /**
  * create : upload product
@@ -19,8 +20,16 @@ export const uploadProduct = async (req, res) => {
                 message: 'User not found'
             });
         }
+        if (!req.file) {
+            return res.status(400).json({
+                message: 'Image is required....please upload an image.'
+            });
+        }
+        const result = await cloudinary.uploader.upload(req.file.path)
+        const imageUrl = result.secure_url
+
         const product = await productModel.create({
-            name, price, description, category, stock, quantity, image
+            name, price, description, category, stock, quantity, image: imageUrl
         });
         await getuserID.products.push(product._id)
         await getuserID.save()

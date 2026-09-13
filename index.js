@@ -1,11 +1,12 @@
+import "dotenv/config";
 import express from 'express';
 import mongoose from 'mongoose';
 import userRouter from './routes/userRoutes.js';
 import productRoute from './routes/productRoutes.js'
 import dns from 'node:dns';
 
-const compass_string = "mongodb://localhost:27017/cohort8_db"
-const atlas_string = "mongodb+srv://oduduoluwanifemi2_db_user:Niffidon@cluster0.f10rnyq.mongodb.net/cohort8_db?appName=Cluster0"
+const compass_string = process.env.COMPASS_STRING;
+const atlas_string = process.env.ATLAS_STRING;
 
 dns.setServers(['8.8.8.8', '1.1.1.1']);
 
