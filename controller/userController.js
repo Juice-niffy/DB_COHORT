@@ -121,4 +121,4 @@ export const deleteUser = async (req, res) => {
 
 
 // module.exports = { createUser, getAllUsers, getSingleUser, updateUser, deleteUser }
-export default { createUser, getAllUsers, getSingleUser, updateUser, deleteUser, loginUser }
+export default {loginUser, createUser, getAllUsers, getSingleUser, updateUser, deleteUser }
